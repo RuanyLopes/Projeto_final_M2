@@ -3,27 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo à Hackathon: Compartilhe e Evolua!</title>
+    <title>Hackathon: Compartilhe e Evolua!</title>
+    <link rel="stylesheet" href="assets/css/index.css">
 </head>
 <body>
+
+<!-- Página Inicial -->
+<div class="container" id="initialPage">
+    <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
+    <p>Preparado para começar? Clique no botão abaixo para entrar!</p>
+    <button class="btn" onclick="goToLoginPage()">Entrar</button>
+    <button class="btn" onclick="goToRegistrationPage()">Cadastrar</button>
+</div>
+
+<!-- Página de Cadastro -->
+<div class="container" id="registrationPage" style="display: none;">
+    <h2>Cadastro</h2>
+    <form id="registrationForm">
+        <input type="text" id="username" placeholder="Nome de Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button type="submit" class="btn">Cadastrar</button>
+    </form>
+    <div id="errorMessage" class="error"></div>
+</div>
+
+<!-- Página de Login -->
+<div class="container" id="loginPage" style="display: none;">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Nome de Usuário" required>
+        <input type="password" id="loginPassword" placeholder="Senha" required>
+        <button type="submit" class="btn">Entrar</button>
+    </form>
+    <div id="loginErrorMessage" class="error"></div>
+</div>
+
+<!-- Escolha de Personagem -->
+<div class="container" id="characterContainer" style="display: none;">
+    <h2>Escolha seu Personagem</h2>
+    <div class="characters">
+        <div class="character" onclick="chooseCharacter('Herói 1')">
+            <img src="https://via.placeholder.com/50" alt="Herói 1">
+            <p>Herói 1</p>
+        </div>
+        <div class="character" onclick="chooseCharacter('Herói 2')">
+            <img src="https://via.placeholder.com/50" alt="Herói 2">
+            <p>Herói 2</p>
+        </div>
+        <div class="character" onclick="chooseCharacter('Herói 3')">
+            <img src="https://via.placeholder.com/50" alt="Herói 3">
+            <p>Herói 3</p>
+        </div>
+    </div>
+    <button class="btn" onclick="goToMainPage()">Confirmar</button>
+</div>
+
+<!-- Página Principal -->
+<div class="container" id="mainPage" style="display: none;">
     <header>
         <nav>
             <a href="http://127.0.0.1:5500/Pag2.html">Cronograma do Evento</a>
             <a href="http://127.0.0.1:5500/Pag3.html">Recursos e Materiais</a>
             <a href="http://127.0.0.1:5500/Pag4.html">Feedback e Comunidade</a>
-            <button>Inscreva-se Agora</button>
+            <button onclick="logout()">Sair</button>
         </nav>
-        <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1></header>
+        <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
+    </header>
+
     <section class="main">
         <div class="conteúdo">
-            <!-- ◦ Objetivo do site: Criar uma comunidade onde alunos possam compartilhar e acessar materiais didáticos de forma colaborativa e gratuita.
-            ◦ Impacto: Promover a inclusão e a igualdade no acesso à educação. -->
+            <p><strong>Objetivo do site:</strong> Criar uma comunidade onde alunos possam compartilhar e acessar materiais didáticos de forma colaborativa e gratuita.</p>
+            <p><strong>Impacto:</strong> Promover a inclusão e a igualdade no acesso à educação.</p>
         </div>
         <div class="rules">
-            <!-- ◦ Respeitar os direitos autorais ao compartilhar conteúdos.
-            ◦ Garantir que o material seja relevante e útil.
-            ◦ Manter um ambiente colaborativo e respeitoso -->
+            <p><strong>Regras:</strong></p>
+            <ul>
+                <li>Respeitar os direitos autorais ao compartilhar conteúdos.</li>
+                <li>Garantir que o material seja relevante e útil.</li>
+                <li>Manter um ambiente colaborativo e respeitoso.</li>
+            </ul>
+        </div>
+        <div class="user-profile">
+            <h2>Perfil do Usuário</h2>
+            <p><strong>Personagem escolhido:</strong> <span id="chosenCharacter"></span></p>
+            <p><strong>Seus pontos: </strong><span id="userPoints">0</span></p>
         </div>
     </section>
+</div>
+
+<script src="assets/js/index.js"></script>
 </body>
 </html>
+
+
