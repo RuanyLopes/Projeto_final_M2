@@ -3,37 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/pag2.css">
     <title>Cronograma da Hackathon</title>
 </head>
 <body>
     <header>
-      <!-- Botão para abrir o calendário -->
-    <button id="openModalBtn">Abrir Calendário</button>
+        <button id="openModalBtn">Abrir Calendário</button>
 
-    <!-- Modal -->
-    <div id="calendarModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">Calendário</div>
-            <div class="calendar" id="calendar">
-                <!-- JavaScript insere os dias aqui -->
+        <!-- Modal -->
+        <div id="calendarModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">Calendário</div>
+                <div class="calendar" id="calendar">
+                    <!-- O calendário será gerado via JavaScript -->
+                </div>
+                <p id="selectedDate"></p>
+                <button id="addToCalendar" class="add-btn">Adicionar ao Meu Calendário</button>
+                <button class="close-btn" id="closeModalBtn">Fechar</button>
             </div>
-            <p id="selectedDate"></p>
-            <button id="addToCalendar" class="add-btn">Adicionar ao Meu Calendário</button>
-            <button class="close-btn" id="closeModalBtn">Fechar</button>
         </div>
-    </div>
     </header>
+
     <h1>Eventos Programados:</h1>
     <section>
-    <ul>
-        <li>Dia 1: Introdução e formação de equipes.</li>
-        <li>Dia 2: Palestras sobre desenvolvimento colaborativo.</li>
-        <li>Dia 3: Compartilhamento e avaliação de materiais.</li>
-        <li>Dia 4: Premiação e encerramento.</li>
-    </ul>
-</section>
-<section>
-    <!-- Horários específicos, palestrantes confirmados, e link para transmissão online. -->
-</section>
+        <ul id="eventList">
+            <li class="event" onclick="addToCalendar('Dia 1: Introdução e formação de equipes')">Dia 1: Introdução e formação de equipes</li>
+            <li class="event" onclick="addToCalendar('Dia 2: Palestras sobre desenvolvimento colaborativo')">Dia 2: Palestras sobre desenvolvimento colaborativo</li>
+            <li class="event" onclick="addToCalendar('Dia 3: Compartilhamento e avaliação de materiais')">Dia 3: Compartilhamento e avaliação de materiais</li>
+            <li class="event" onclick="addToCalendar('Dia 4: Premiação e encerramento')">Dia 4: Premiação e encerramento</li>
+        </ul>
+    </section>
+
+    <section>
+        <div class="progress-container">
+            <h3>Progresso de Participação</h3>
+            <progress id="participationProgress" value="0" max="100"></progress>
+            <p>Pontos: <span id="participationPoints">0</span></p>
+            <p>Nível: <span id="userLevel">1</span></p>
+        </div>
+    </section>
+    
+    <section>
+        <div id="challenges">
+            <h3>Desafios</h3>
+            <ul>
+                <li id="challenge1" class="challenge locked">📅 Adicione 3 eventos ao calendário</li>
+                <li id="challenge2" class="challenge locked">🎯 Selecione uma data</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <div id="ranking">
+            <h3>Ranking</h3>
+            <ol id="rankingList">
+                <li>Ana: 120 pontos</li>
+                <li>Carlos: 100 pontos</li>
+                <li id="currentUser">Você: 0 pontos</li>
+            </ol>
+        </div>
+    </section>
+    
+
+    <script src="assets/js/calendar.js"></script>
+    <script src="assets/js/pag2.js"></script>
 </body>
 </html>
