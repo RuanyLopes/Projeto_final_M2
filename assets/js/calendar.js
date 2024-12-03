@@ -1,70 +1,89 @@
-// Abre o modal de calendário quando o botão é clicado
-document.getElementById('openModalBtn').addEventListener('click', function() {
-    document.getElementById('calendarModal').style.display = 'flex';
-    renderCalendar(); // Renderiza o calendário assim que o modal for aberto
+// Referências aos elementos do DOM
+const openModalBtn = document.getElementById("openModalBtn");
+const calendarModal = document.getElementById("calendarModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const calendar = document.getElementById("calendar");
+const selectedDate = document.getElementById("selectedDate");
+const addToCalendarBtn = document.getElementById("addToCalendar");
+
+// Abrir o modal
+openModalBtn.addEventListener("click", () => {
+    calendarModal.style.display = "block";
+    generateCalendar(new Date().getFullYear(), new Date().getMonth());
 });
 
-// Fecha o modal quando o botão de fechar é clicado
-document.getElementById('closeModalBtn').addEventListener('click', function() {
-    document.getElementById('calendarModal').style.display = 'none';
+// Fechar o modal
+closeModalBtn.addEventListener("click", () => {
+    calendarModal.style.display = "none";
+    selectedDate.textContent = ""; // Limpar a data selecionada
 });
 
-// Função para renderizar o calendário no modal
-function renderCalendar() {
-    const calendarDiv = document.getElementById('calendar');
-    const selectedDateParagraph = document.getElementById('selectedDate');
+// Gerar calendário dinamicamente
+function generateCalendar(year, month) {
+    calendar.innerHTML = ""; // Limpar calendário anterior
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Limpa o conteúdo do calendário antes de re-renderizar
-    calendarDiv.innerHTML = '';
-
-    const date = new Date();
-    const currentMonth = date.getMonth();  // Mês atual
-    const currentYear = date.getFullYear(); // Ano atual
-
-    // Definir o primeiro dia do mês
-    const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-    const lastDateOfMonth = new Date(currentYear, currentMonth + 1, 0);
-    const lastDayOfMonth = lastDateOfMonth.getDay(); // Último dia do mês
-
-    // Definir quantos dias o mês tem
-    const totalDaysInMonth = lastDateOfMonth.getDate();
-
-    // Renderizar os dias da semana
-    const daysOfWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-    daysOfWeek.forEach(day => {
-        const dayDiv = document.createElement('div');
-        dayDiv.textContent = day;
-        calendarDiv.appendChild(dayDiv);
-    });
-
-    // Preencher os espaços vazios antes do primeiro dia do mês
-    for (let i = 0; i < firstDayOfMonth.getDay(); i++) {
-        const emptyDiv = document.createElement('div');
-        calendarDiv.appendChild(emptyDiv);
+    // Adicionar dias em branco para alinhar o primeiro dia
+    for (let i = 0; i < firstDay; i++) {
+        const blankDay = document.createElement("div");
+        blankDay.className = "blank-day";
+        calendar.appendChild(blankDay);
     }
 
-    // Renderizar os dias do mês
-    for (let day = 1; day <= totalDaysInMonth; day++) {
-        const dayDiv = document.createElement('div');
+    // Adicionar os dias do mês
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement("div");
         dayDiv.textContent = day;
-        dayDiv.classList.add('day');
-        
-        // Adicionar evento de clique para selecionar a data
-        dayDiv.addEventListener('click', function() {
-            selectedDateParagraph.textContent = `Você selecionou: ${day}/${currentMonth + 1}/${currentYear}`;
-            selectedDateParagraph.dataset.selectedDay = day;
+        dayDiv.className = "day";
+        dayDiv.addEventListener("click", () => {
+            selectDate(year, month, day);
         });
-
-        calendarDiv.appendChild(dayDiv);
+        calendar.appendChild(dayDiv);
     }
 }
 
-// Adicionar a data selecionada ao calendário do usuário (simulação)
-document.getElementById('addToCalendar').addEventListener('click', function() {
-    const selectedDate = document.getElementById('selectedDate').textContent;
-    if (selectedDate) {
-        alert(`Data "${selectedDate}" adicionada ao seu calendário!`);
+// Selecionar uma data
+function selectDate(year, month, day) {
+    const formattedDate = new Date(year, month, day).toLocaleDateString("pt-BR");
+    selectedDate.textContent = `Data Selecionada: ${formattedDate}`;
+}
+
+// Adicionar ao calendário
+addToCalendarBtn.addEventListener("click", () => {
+    if (selectedDate.textContent) {
+        alert(`${selectedDate.textContent} adicionada ao seu calendário.`);
+        updateGamification(); // Atualiza gamificação ao adicionar data
+        // Salvar no localStorage (opcional)
+        const savedDates = JSON.parse(localStorage.getItem("userDates")) || [];
+        savedDates.push(selectedDate.textContent);
+        localStorage.setItem("userDates", JSON.stringify(savedDates));
+        calendarModal.style.display = "none";
     } else {
-        alert("Selecione uma data antes de adicionar.");
+        alert("Por favor, selecione uma data.");
     }
 });
+
+// Fechar modal clicando fora dele
+window.addEventListener("click", (e) => {
+    if (e.target === calendarModal) {
+        calendarModal.style.display = "none";
+    }
+});
+
+// Atualizar a gamificação (pontos e progresso)
+function updateGamification() {
+    let userPoints = parseInt(localStorage.getItem("userPoints")) || 0;
+    let progress = parseInt(localStorage.getItem("progress")) || 0;
+
+    userPoints += 10; // Incrementar pontos ao adicionar evento
+    progress = Math.min(progress + 10, 100); // Atualizar progresso global
+
+    // Atualizar no localStorage
+    localStorage.setItem("userPoints", userPoints);
+    localStorage.setItem("progress", progress);
+
+    // Exibir progresso e pontos atualizados
+    alert(`Progresso atualizado! Você tem ${userPoints} pontos.`);
+}
+
