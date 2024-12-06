@@ -3,9 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/pag3.css">
     <title>Biblioteca de Recursos</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Biblioteca de Recursos</h1>
+    </header>
+
+    <!-- Acesso a Materiais Didáticos -->
+    <section id="access-materials">
+        <h2>Acesso a Materiais Didáticos</h2>
+
+        <!-- Filtros Dinâmicos -->
+        <div id="filters">
+            <label for="categoryFilter">Filtrar por Categoria:</label>
+            <select id="categoryFilter" onchange="applyFilters()">
+                <option value="all">Todas</option>
+                <option value="Matemática">Matemática</option>
+                <option value="Ciências">Ciências</option>
+                <option value="Linguagens">Linguagens</option>
+                <option value="História">História</option>
+                <!-- Adicione mais categorias conforme necessário -->
+            </select>
+
+            <label for="levelFilter">Filtrar por Nível de Ensino:</label>
+            <select id="levelFilter" onchange="applyFilters()">
+                <option value="all">Todos</option>
+                <option value="Fundamental">Fundamental</option>
+                <option value="Médio">Médio</option>
+                <option value="Superior">Superior</option>
+            </select>
+
+            <label for="dateFilter">Filtrar por Data de Envio:</label>
+            <input type="date" id="dateFilter" onchange="applyFilters()">
+        </div>
+
+        <!-- Barra de Pesquisa -->
+        <div id="search-bar">
+            <input type="text" id="searchInput" placeholder="Buscar materiais..." oninput="searchMaterials()">
+            <button onclick="searchMaterials()">Buscar</button>
+        </div>
+
+        <!-- Resultados da pesquisa -->
+        <div id="searchResults">
+            <h3>Resultados de Busca:</h3>
+            <ul id="materialsList">
+                <!-- Resultados serão preenchidos aqui via JavaScript -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sistema de Upload e Download -->
+    <section id="upload-download">
+        <h2>Compartilhar ou Baixar Material</h2>
+
+        <!-- Botão de Upload -->
+        <div id="upload-section">
+            <h3>Compartilhar Material</h3>
+            <input type="file" id="fileUpload" accept=".pdf, .ppt, .docx" onchange="validateUpload()">
+            <button onclick="uploadFile()">Compartilhar</button>
+            <span id="upload-status"></span>
+        </div>
+
+        <!-- Botão de Download -->
+        <h3>Baixar Materiais Compartilhados</h3>
+        <div id="download-section">
+            <ul id="downloadList">
+                <!-- Lista de arquivos para download -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Visualização Preliminar -->
+    <section id="preview-section">
+        <h2>Visualização de Documentos</h2>
+        <div id="preview-container">
+            <!-- Exibe a visualização do documento aqui -->
+        </div>
+    </section>
+
+    <script src="assets/js/pag3.js"></script>
 </body>
 </html>
