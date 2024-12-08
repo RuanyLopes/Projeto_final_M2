@@ -20,23 +20,25 @@
 <div class="container" id="registrationPage" style="display: none;">
     <h2>Cadastro</h2>
     <form id="registrationForm">
-        <input type="text" id="username" placeholder="Nome de Usuário" required>
-        <input type="password" id="password" placeholder="Senha" required>
+        <input type="text" class="input" id="username" placeholder="Nome de Usuário" required>
+        <input type="password" class="input" id="password" placeholder="Senha" required>
         <button type="submit" class="btn">Cadastrar</button>
     </form>
     <div id="errorMessage" class="error"></div>
 </div>
 
+
 <!-- Página de Login -->
-<div class="container" id="loginPage" style="display: none;">
+<div class="login_container" id="loginPage" style="display: none;">
     <h2>Login</h2>
     <form id="loginForm">
-        <input type="text" id="loginUsername" placeholder="Nome de Usuário" required>
-        <input type="password" id="loginPassword" placeholder="Senha" required>
+        <input type="text" class="inputlogin" id="loginUsername" placeholder="Nome de Usuário" required>
+        <input type="password" class="inputlogin" id="loginPassword" placeholder="Senha" required>
         <button type="submit" class="btn">Entrar</button>
     </form>
     <div id="loginErrorMessage" class="error"></div>
 </div>
+
 
 <!-- Escolha de Personagem -->
 <div class="container" id="characterContainer" style="display: none;">
