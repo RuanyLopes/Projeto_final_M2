@@ -12,11 +12,11 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    width: 80%;
-    height: 80%;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 900px;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    padding: 50px;
     background-color: #fff;
     border: 2px solid #ccc;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,11 @@ body {
 
 h2, h1 {
     color: #333;
-    font-size: 500%;
+    font-size: 300%;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+
 }
 
 .btn {
@@ -35,7 +39,7 @@ h2, h1 {
     height: 60px;
     border-radius: 50px;
     background-image: linear-gradient(135deg, #dfee10 0%, #14e225 100%);
-    box-shadow: 0 20px 30px -6px rgba(73, 143, 223, 0.5);
+    box-shadow: 0 20px 30px -6px rgba(14, 35, 59, 0.5);
     outline: none;
     cursor: pointer;
     border: none;
@@ -108,11 +112,12 @@ h2, h1 {
 .login_container { 
     display: flex;
     flex-direction: column;
+    
     gap: 10px;
     padding-left: 2em;
     padding-right: 2em;
     padding-bottom: 0.4em;
-    max-width: 1200px;
+    max-width: 900px;
     width: 80%;
     height: 80%;
     margin: 50px auto;
@@ -123,4 +128,13 @@ h2, h1 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     color: #ccc;
+}
+
+@media screen and (max-width: 1020px) {
+
+    /* responsividade */
+    .container, .btn {
+        display: flexbox;
+        gap: 5px;
+    }
 }
