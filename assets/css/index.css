@@ -37,14 +37,19 @@ body {
 }
 
 
-
-h2, h1 {
-    color: #333;
+h1 {
+    color: #dad9d9;
     font-size: 300%;
     margin: 10px;
     padding: 20px;
     text-align: center;
-
+}
+h2 {
+    color: #dad9d9;
+    font-size: 300%;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
 }
 
 .btn {
@@ -53,8 +58,8 @@ h2, h1 {
     width: 150px;
     height: 60px;
     border-radius: 50px;
-    background-image: linear-gradient(135deg, #dfee10 0%, #14e225 100%);
-    box-shadow: 0 20px 30px -6px rgba(14, 35, 59, 0.5);
+    background-image: linear-gradient(135deg, #dfee10 0%, #0f5e15 100%);
+    box-shadow: 0 20px 30px -6px rgba(144, 176, 212, 0.5);
     outline: none;
     cursor: pointer;
     border: none;
@@ -62,6 +67,31 @@ h2, h1 {
     color: white;
 }
 
+.botão_nav1 {
+    height: 50px;
+    margin: 5px;
+    width: 120px;
+    background: #333;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: Consolas, Courier New, monospace;
+    border: solid #404c5d 1px;
+    font-size: 16px;
+    color: rgb(161, 161, 161);
+    -webkit-transition: 500ms;
+    transition: 500ms;
+    border-radius: 5px;
+    background: linear-gradient(145deg, #2e2d2d, #212121);
+    -webkit-box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+      inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+    box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
+      inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+}
 
 .btn:hover {
     transform: translateY(3px);
@@ -125,9 +155,9 @@ h2, h1 {
     background-color: #171717;
     border: 2px solid #ccc;
     border-radius: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
     text-align: center;
-    color: #e7d7d7;
+    color: #ffffff;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -165,7 +195,7 @@ h2, h1 {
     border-radius: 25px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: #e7d7d7;
+    color: #ffffff;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -194,6 +224,54 @@ h2, h1 {
     justify-content: center;
     flex-direction: column;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.character_container{
+    display: flex;
+    gap: 5px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    max-width: 900px;
+    width: 900px;
+    height: 70%;
+    margin: 200px auto;
+    padding: 20px;
+    background-color: #171717;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
+    text-align: center;
+    color: #000000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
+}
+
+.principal_container {
+    display: flex;
+    gap: 5px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    max-width: 900px;
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #171717;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.24);
+    text-align: center;
+    color: #c2c1c1;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
 }
 
 @media screen and (max-width: 1020px) {
