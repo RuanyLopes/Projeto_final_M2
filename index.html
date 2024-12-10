@@ -9,7 +9,7 @@
 <body>
 
 <!-- Página Inicial -->
-<div class="container" id="initialPage">
+<div class="Initial_container" id="initialPage">
     <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
     <p>Preparado para começar? Clique no botão abaixo para entrar!</p>
     <button class="btn" onclick="goToLoginPage()">Entrar</button>
@@ -17,11 +17,11 @@
 </div>
 
 <!-- Página de Cadastro -->
-<div class="container" id="registrationPage" style="display: none;">
+<div class="Cadastro_container" id="registrationPage" style="display: none;">
     <h2>Cadastro</h2>
     <form id="registrationForm">
-        <input type="text" class="input" id="username" placeholder="Nome de Usuário" required>
-        <input type="password" class="input" id="password" placeholder="Senha" required>
+        <input type="text" class="inputAll" id="username" placeholder="Nome de Usuário" required>
+        <input type="password" class="inputAll" id="password" placeholder="Senha" required>
         <button type="submit" class="btn">Cadastrar</button>
     </form>
     <div id="errorMessage" class="error"></div>
@@ -32,8 +32,8 @@
 <div class="login_container" id="loginPage" style="display: none;">
     <h2>Login</h2>
     <form id="loginForm">
-        <input type="text" class="inputlogin" id="loginUsername" placeholder="Nome de Usuário" required>
-        <input type="password" class="inputlogin" id="loginPassword" placeholder="Senha" required>
+        <input type="text" class="inputAll" id="loginUsername" placeholder="Nome de Usuário" required>
+        <input type="password" class="inputAll" id="loginPassword" placeholder="Senha" required>
         <button type="submit" class="btn">Entrar</button>
     </form>
     <div id="loginErrorMessage" class="error"></div>
