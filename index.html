@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackathon: Compartilhe e Evolua!</title>
     <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/calender.css">
 </head>
 <body>
 
@@ -12,12 +13,12 @@
 <div class="Initial_container" id="initialPage">
     <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
     <p>Preparado para começar? Clique no botão abaixo para entrar!</p>
-    <button class="btn" onclick="goToLoginPage()">Entrar</button>
-    <button class="btn" onclick="goToRegistrationPage()">Cadastrar</button>
+    <button class="btn" onclick="app.goToLoginPage()">Entrar</button>
+    <button class="btn" onclick="app.goToRegistrationPage()">Cadastrar</button>
 </div>
 
 <!-- Página de Cadastro -->
-<div class="Cadastro_container" id="registrationPage" style="display: none;">
+<div class="registration_container" id="registrationPage" style="display: none;">
     <h2>Cadastro</h2>
     <form id="registrationForm">
         <input type="text" class="inputAll" id="username" placeholder="Nome de Usuário" required>
@@ -26,7 +27,6 @@
     </form>
     <div id="errorMessage" class="error"></div>
 </div>
-
 
 <!-- Página de Login -->
 <div class="login_container" id="loginPage" style="display: none;">
@@ -39,41 +39,40 @@
     <div id="loginErrorMessage" class="error"></div>
 </div>
 
-
 <!-- Escolha de Personagem -->
 <div class="character_container" id="characterContainer" style="display: none;">
     <h2>Escolha seu Personagem</h2>
     <div class="characters">
-        <div class="character" onclick="chooseCharacter('Herói 1')">
-            <img src="" alt="Herói 1">
+        <div class="character" onclick="app.chooseCharacter('Herói 1')">
+            <img src="assets/img/hero1(1).png" alt="Herói 1">
             <p>Herói 1</p>
         </div>
-        <div class="character" onclick="chooseCharacter('Herói 2')">
-            <img src="" alt="Herói 2">
+        <div class="character" onclick="app.chooseCharacter('Herói 2')">
+            <img src="assets/img/hero2 (1).png" alt="Herói 2">
             <p>Herói 2</p>
         </div>
-        <div class="character" onclick="chooseCharacter('Herói 3')">
-            <img src="" alt="Herói 3">
+        <div class="character" onclick="app.chooseCharacter('Herói 3')">
+            <img src="assets/img/hero3 (1).png" alt="Herói 3">
             <p>Herói 3</p>
         </div>
     </div>
-    <button class="btn" onclick="goToMainPage()">Confirmar</button>
+    <button class="btn" onclick="app.goToMainPage()">Confirmar</button>
 </div>
 
 <!-- Página Principal -->
-<div class="principal_container" id="mainPage" style="display: none;">
+<div class="main_container" id="mainPage" style="display: none;">
     <header>
         <nav>
             <a href="Pag2.html" class="botao_nav1">Cronograma do Evento</a>
             <a href="Pag3.html" class="botao_nav2">Recursos e Materiais</a>
             <a href="Pag4.html" class="botao_nav3">Feedback e Comunidade</a>
-            <button onclick="logout()" id="botao_sair">Sair</button>
+            <button onclick="app.logout()" id="botao_sair">Sair</button>
         </nav>
         <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
     </header>
 
     <section class="main">
-        <div class="conteudo">
+        <div class="text">
             <p><strong>Objetivo do site:</strong> Criar uma comunidade onde alunos possam compartilhar e acessar materiais didáticos de forma colaborativa e gratuita.</p>
             <p><strong>Impacto:</strong> Promover a inclusão e a igualdade no acesso à educação.</p>
         </div>
