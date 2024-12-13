@@ -67,30 +67,18 @@ h2 {
     color: white;
 }
 
-.botão_nav1 {
-    height: 50px;
-    margin: 5px;
-    width: 120px;
-    background: #333;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    cursor: pointer;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-family: Consolas, Courier New, monospace;
-    border: solid #404c5d 1px;
-    font-size: 16px;
-    color: rgb(161, 161, 161);
-    -webkit-transition: 500ms;
-    transition: 500ms;
-    border-radius: 5px;
-    background: linear-gradient(145deg, #2e2d2d, #212121);
-    -webkit-box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
-      inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
-    box-shadow: -1px -5px 15px #41465b, 5px 5px 15px #41465b,
-      inset 5px 5px 10px #212121, inset -5px -5px 10px #212121;
+.botao_nav1, .botao_nav2, .botao_nav3 {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Texto branco */
+    padding: 8px 23px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    text-decoration: none; /* Remove sublinhado */
+    display: inline-block; /* Faz o botão se comportar como um bloco */
+    font-size: 16px; /* Tamanho da fonte */
+    margin: 4px 2px; /* Margem ao redor do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    border: none; /* Remove bordas */
+    border-radius: 5px; /* Bordas arredondadas */
 }
 
 .btn:hover {
@@ -143,13 +131,13 @@ h2 {
 
 .Initial_container {
     display: flex;
-    gap: 5px;
-    padding-left: 2em;
-    padding-right: 2em;
+    gap: 7px;
+    padding-left: auto;
+    padding-right: auto;
     padding-bottom: 0.4em;
     max-width: 900px;
     width: 1000px;
-    height: 90%;
+    height: 700px auto;
     margin: 200px auto;
     padding: 20px;
     background-color: #171717;
@@ -187,7 +175,7 @@ h2 {
     padding-bottom: 0.4em;
     max-width: 900px;
     width: 400px;
-    height: 65%;
+    height: 65% auto;
     margin: 200px auto;
     padding: 20px;
     background-color: #171717;
@@ -233,8 +221,8 @@ h2 {
     padding-right: 2em;
     padding-bottom: 0.4em;
     max-width: 900px;
-    width: 900px;
-    height: 70%;
+    width: 900px auto;
+    height: 70% auto;
     margin: 200px auto;
     padding: 20px;
     background-color: #171717;
@@ -257,10 +245,10 @@ h2 {
     padding-right: 2em;
     padding-bottom: 0.4em;
     max-width: 900px;
-    width: 1000px;
-    height: 800px;
+    width: 800px auto;
+    height: 800px auto;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
     background-color: #171717;
     border: 2px solid #ccc;
     border-radius: 25px;
@@ -272,6 +260,29 @@ h2 {
     flex-direction: column;
     font-size: larger;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
+}
+
+.main {
+    justify-items: center;
+    text-align: start;
+    flex-direction: column;
+    padding: 30px;
+}
+
+#botao_sair {
+    padding: 0,8rem 0,8rem;
+    font-weight: 700;
+    background: rgb(255, 255, 255);
+    color: blueviolet;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border-bottom: 2px solid blueviolet;
+    border-right: 2px solid blueviolet;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    transition-duration: 1s;
+    transition-property: border-top, border-left, border-bottom, border-right,
+    box-shadow;
 }
 
 @media screen and (max-width: 1020px) {
