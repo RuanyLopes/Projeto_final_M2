@@ -52,6 +52,7 @@ h2 {
     text-align: center;
 }
 
+
 .btn {
     transition: all 0.3s ease-in-out;
     font-family: "Dosis", sans-serif;
@@ -113,6 +114,7 @@ h2 {
 }
 
 .character p {
+    color: #dad9d9;
     margin-top: 10px;
 }
 
@@ -191,7 +193,7 @@ h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
 }
 
-.Cadastro_container {
+.registration_container {
     display: flex;
     gap: 5px;
     padding-left: 0em;
@@ -238,7 +240,7 @@ h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-seri
 }
 
-.principal_container {
+.main_container {
     display: flex;
     gap: 5px;
     padding-left: 2em;
