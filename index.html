@@ -9,7 +9,7 @@
 <body>
 
 <!-- Página Inicial -->
-<div class="container" id="initialPage">
+<div class="Initial_container" id="initialPage">
     <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
     <p>Preparado para começar? Clique no botão abaixo para entrar!</p>
     <button class="btn" onclick="goToLoginPage()">Entrar</button>
@@ -17,11 +17,11 @@
 </div>
 
 <!-- Página de Cadastro -->
-<div class="container" id="registrationPage" style="display: none;">
+<div class="Cadastro_container" id="registrationPage" style="display: none;">
     <h2>Cadastro</h2>
     <form id="registrationForm">
-        <input type="text" class="input" id="username" placeholder="Nome de Usuário" required>
-        <input type="password" class="input" id="password" placeholder="Senha" required>
+        <input type="text" class="inputAll" id="username" placeholder="Nome de Usuário" required>
+        <input type="password" class="inputAll" id="password" placeholder="Senha" required>
         <button type="submit" class="btn">Cadastrar</button>
     </form>
     <div id="errorMessage" class="error"></div>
@@ -32,8 +32,8 @@
 <div class="login_container" id="loginPage" style="display: none;">
     <h2>Login</h2>
     <form id="loginForm">
-        <input type="text" class="inputlogin" id="loginUsername" placeholder="Nome de Usuário" required>
-        <input type="password" class="inputlogin" id="loginPassword" placeholder="Senha" required>
+        <input type="text" class="inputAll" id="loginUsername" placeholder="Nome de Usuário" required>
+        <input type="password" class="inputAll" id="loginPassword" placeholder="Senha" required>
         <button type="submit" class="btn">Entrar</button>
     </form>
     <div id="loginErrorMessage" class="error"></div>
@@ -41,7 +41,7 @@
 
 
 <!-- Escolha de Personagem -->
-<div class="container" id="characterContainer" style="display: none;">
+<div class="character_container" id="characterContainer" style="display: none;">
     <h2>Escolha seu Personagem</h2>
     <div class="characters">
         <div class="character" onclick="chooseCharacter('Herói 1')">
@@ -61,19 +61,19 @@
 </div>
 
 <!-- Página Principal -->
-<div class="container" id="mainPage" style="display: none;">
+<div class="principal_container" id="mainPage" style="display: none;">
     <header>
         <nav>
-            <a href="Pag2.html">Cronograma do Evento</a>
-            <a href="Pag3.html">Recursos e Materiais</a>
-            <a href="Pag4.html">Feedback e Comunidade</a>
-            <button onclick="logout()">Sair</button>
+            <a href="Pag2.html" class="botao_nav1">Cronograma do Evento</a>
+            <a href="Pag3.html" class="botao_nav2">Recursos e Materiais</a>
+            <a href="Pag4.html" class="botao_nav3">Feedback e Comunidade</a>
+            <button onclick="logout()" id="botao_sair">Sair</button>
         </nav>
         <h1>Bem-vindo à Hackathon de Compartilhamento de Conhecimento</h1>
     </header>
 
     <section class="main">
-        <div class="conteúdo">
+        <div class="conteudo">
             <p><strong>Objetivo do site:</strong> Criar uma comunidade onde alunos possam compartilhar e acessar materiais didáticos de forma colaborativa e gratuita.</p>
             <p><strong>Impacto:</strong> Promover a inclusão e a igualdade no acesso à educação.</p>
         </div>
@@ -96,5 +96,3 @@
 <script src="assets/js/index.js"></script>
 </body>
 </html>
-
-
