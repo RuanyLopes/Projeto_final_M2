@@ -1,88 +1,79 @@
-let currentUser = null;
-let chosenCharacter = "";
+class App {
+    constructor() {
+        this.currentUser = null;
+        this.chosenCharacter = "";
 
-// Função para ir para a página de login
-function goToLoginPage() {
-    document.getElementById("initialPage").style.display = 'none';
-    document.getElementById("loginPage").style.display = 'block';
-}
-
-// Função para ir para a página de cadastro
-function goToRegistrationPage() {
-    document.getElementById("initialPage").style.display = 'none';  // Esconde a página inicial
-    document.getElementById("registrationPage").style.display = 'block';  // Mostra a página de cadastro
-}
-
-
-// Função para cadastrar o usuário
-document.getElementById("registrationForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    // Verificar se o nome de usuário já existe no localStorage
-    if (localStorage.getItem(username)) {
-        document.getElementById("errorMessage").textContent = "Usuário já cadastrado!";
-    } else {
-        // Salvar no localStorage
-        const user = { username: username, password: password };
-        localStorage.setItem(username, JSON.stringify(user));
-
-        // Limpar a mensagem de erro e mostrar que o cadastro foi bem-sucedido
-        document.getElementById("errorMessage").textContent = "";
-        alert("Cadastro realizado com sucesso! Você pode agora fazer login.");
-
-        // Redirecionar para a página de login
-        document.getElementById("registrationPage").style.display = "none";
-        document.getElementById("loginPage").style.display = "block";
+        // Inicializar eventos
+        document.getElementById("registrationForm").addEventListener("submit", this.registerUser.bind(this));
+        document.getElementById("loginForm").addEventListener("submit", this.loginUser.bind(this));
     }
-});
 
-// Função de Login
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const loginUsername = document.getElementById("loginUsername").value;
-    const loginPassword = document.getElementById("loginPassword").value;
-
-    // Recuperar o usuário armazenado no localStorage
-    const storedUser = JSON.parse(localStorage.getItem(loginUsername));
-
-    if (storedUser && storedUser.password === loginPassword) {
-        currentUser = loginUsername;
-        alert("Login bem-sucedido!");
-        document.getElementById("loginPage").style.display = 'none';
-        document.getElementById("characterContainer").style.display = 'block';
-    } else {
-        document.getElementById("loginErrorMessage").textContent = "Nome de usuário ou senha incorretos!";
+    goToLoginPage() {
+        this.showPage("loginPage");
     }
-});
 
-// Função para escolher personagem
-function chooseCharacter(character) {
-    chosenCharacter = character;
-    document.getElementById("chosenCharacter").textContent = chosenCharacter;
-}
+    goToRegistrationPage() {
+        this.showPage("registrationPage");
+    }
 
-// Função para confirmar personagem e ir para a página principal
-function goToMainPage() {
-    if (chosenCharacter) {
-        document.getElementById("characterContainer").style.display = 'none';
-        document.getElementById("mainPage").style.display = 'block';
-        document.getElementById("chosenCharacter").textContent = chosenCharacter;
-    } else {
-        alert("Por favor, escolha um personagem!");
+    registerUser(event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (localStorage.getItem(username)) {
+            document.getElementById("errorMessage").textContent = "Usuário já cadastrado!";
+        } else {
+            localStorage.setItem(username, JSON.stringify({ username, password }));
+            alert("Cadastro realizado com sucesso! Você pode agora fazer login.");
+            this.goToLoginPage();
+        }
+    }
+
+    loginUser(event) {
+        event.preventDefault();
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
+
+        const user = JSON.parse(localStorage.getItem(username));
+
+        if (user && user.password === password) {
+            this.currentUser = username;
+            alert("Login bem-sucedido!");
+            this.showPage("characterContainer");
+        } else {
+            document.getElementById("loginErrorMessage").textContent = "Nome de usuário ou senha incorretos!";
+        }
+    }
+
+    chooseCharacter(character) {
+        this.chosenCharacter = character;
+        document.getElementById("chosenCharacter").textContent = this.chosenCharacter;
+    }
+
+    goToMainPage() {
+        if (this.chosenCharacter) {
+            this.showPage("mainPage");
+            document.getElementById("chosenCharacter").textContent = this.chosenCharacter;
+        } else {
+            alert("Por favor, escolha um personagem!");
+        }
+    }
+
+    logout() {
+        this.currentUser = null;
+        this.chosenCharacter = "";
+        this.showPage("initialPage");
+    }
+
+    showPage(pageId) {
+        const pages = ["initialPage", "loginPage", "registrationPage", "characterContainer", "mainPage"];
+        pages.forEach(page => {
+            document.getElementById(page).style.display = page === pageId ? "block" : "none";
+        });
     }
 }
 
-// Função de Logout
-function logout() {
-    currentUser = null;
-    chosenCharacter = "";
-
-    document.getElementById("mainPage").style.display = 'none';
-    document.getElementById("initialPage").style.display = 'block';
-}
+const app = new App();
 
 
