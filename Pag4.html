@@ -8,36 +8,46 @@
 </head>
 <body>
     <header>
-        <h1>feedback e comunidade</h1>
+        <h1>Feedback e Comunidade</h1>
     </header>
     <nav>
         <a href="index.html">Início</a>
     </nav>
     <main>
         <section>
-            <h2>Dê a sua opinião </h2>
-            <form>
+            <h2>Dê a sua opinião</h2>
+            <form id="feedback-form">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" id="nome">
                 <label for="email">Email:</label>
-                <input type="text" name="email" id="email">
-                <label for="obs">Sugestões e oberservações:</label>
-                <input type="text" name="obs" id="obs" height="100%">
-                <button>enviar</button>
+                <input type="email" name="email" id="email">
+                <label for="obs">Sugestões e observações:</label>
+                <textarea name="obs" id="obs" rows="4"></textarea>
+                <button type="submit">Enviar Feedback</button>
             </form>
         </section>
         <section>
             <h2>Testemunhos</h2>
-            <label for="exp">Experiencia com nosso site:</label>
-            <input type="text" name="exp" id="exp">    
-            <button>enviar</button>      
+            <form id="testemunho-form">
+                <label for="exp">Experiência com nosso site:</label>
+                <textarea name="exp" id="exp" rows="4"></textarea>    
+                <button type="submit">Enviar Testemunho</button>    
+            </form>
+            <div id="carrossel-testemunhos">
+                
+            </div>
         </section>
         <section>
             <h2>Estatísticas</h2>
+            <div id="grafico-estatisticas">
+                
+            </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 hackathon pda.</p>
+        <p>&copy; 2024 Hackathon PDA.</p>
     </footer>
+
+    <script src="assets/js/pag4.js"></script>
 </body>
 </html>
