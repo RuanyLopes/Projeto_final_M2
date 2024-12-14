@@ -287,11 +287,140 @@ h2 {
     box-shadow;
 }
 
-@media screen and (max-width: 1020px) {
+/* Estilos gerais permanecem os mesmos */
 
-    /* responsividade */
-    .container, .btn {
-        display: flexbox;
-        gap: 5px;
+/* Responsividade para telas menores */
+@media screen and (max-width: 1020px) {
+    body {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 20px;
+        height: auto;
+    }
+
+    .btn {
+        width: 100%;
+        height: auto;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .login_container, 
+    .registration_container, 
+    .character_container, 
+    .main_container {
+        width: 90%;
+        height: auto;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    h1, h2 {
+        font-size: 200%;
+    }
+
+    .characters {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .character img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .character p {
+        font-size: 14px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .login_container, 
+    .registration_container, 
+    .character_container, 
+    .main_container {
+        padding: 10px;
+        font-size: medium;
+    }
+
+    .characters {
+        gap: 5px;
+    }
+
+    .character img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .character p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1, h2 {
+        font-size: 150%;
+        margin: 5px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .login_container, 
+    .registration_container, 
+    .character_container, 
+    .main_container {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .characters {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .character img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .character p {
+        font-size: 10px;
+    }
+
+    .inputAll {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    #botao_sair {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
+
+
+
+

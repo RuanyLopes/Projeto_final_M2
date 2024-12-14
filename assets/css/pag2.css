@@ -1,47 +1,68 @@
 /* General body styles */
 body {
-    display: flex;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #F3F3F3;
-    background-image: linear-gradient(0deg, transparent 24%, #dad9d9 25%, #dad9d9 26%, transparent 27%, transparent 74%, #dad9d9 75%, #dad9d9 76%, transparent 77%, transparent),
-                      linear-gradient(90deg, transparent 24%, #dad9d9 25%, #dad9d9 26%, transparent 27%, transparent 74%, #dad9d9 75%, #dad9d9 76%, transparent 77%, transparent);
+    padding: 20px;
+    background-color: #f3f3f3;
+    background-image: linear-gradient(
+        0deg,
+        transparent 24%,
+        #dad9d9 25%,
+        #dad9d9 26%,
+        transparent 27%,
+        transparent 74%,
+        #dad9d9 75%,
+        #dad9d9 76%,
+        transparent 77%,
+        transparent
+    ),
+    linear-gradient(
+        90deg,
+        transparent 24%,
+        #dad9d9 25%,
+        #dad9d9 26%,
+        transparent 27%,
+        transparent 74%,
+        #dad9d9 75%,
+        #dad9d9 76%,
+        transparent 77%,
+        transparent
+    );
     background-size: 60px 60px;
-    align-items: center; /* Vertically align */
-    justify-content: flex-start; /* Horizontally align */
-    flex-direction: column; /* Center content in a column layout */
-    padding-top: 20px; /* Adds a little space at the top */
+    box-sizing: border-box;
 }
 
-/* Header styles */
+/* Header  */
 h1 {
-    color: #4158D0;
-    font-size: 2.5rem; /* Reduced font size */
-    margin: 10px;
-    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 2rem;
+    margin: 10px 0;
+    padding: 15px;
     text-align: center;
     font-weight: bold;
+    border-radius: 10px;
 }
 
-/* Section styles */
+/* Section  */
 section {
-    margin: 10px;
-    padding: 15px;
-    width: 90%; /* Reduced section width for better balance */
+    margin: 20px auto;
+    padding: 20px;
+    width: 95%;
+    max-width: 1200px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Modal styling */
+/* Modal */
 .modal {
     display: none;
-    width: 500px; /* Reduced width */
-    height: auto;
-    border-radius: 1rem;
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    background: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -50,56 +71,69 @@ section {
     overflow: hidden;
 }
 
-/* Modal content */
 .modal-content {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 20px;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 480px; /* Adjusted width */
+    border-radius: 10px;
     text-align: center;
 }
 
-/* Modal header */
 .modal-header {
-    font-size: 22px; /* Slightly reduced font size */
+    font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-/* Calendar styles */
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 8px; /* Reduced gap */
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .calendar div {
-    padding: 8px; /* Reduced padding */
+    padding: 10px;
     background-color: #f4f4f4;
     text-align: center;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
 .calendar div:hover {
     background-color: #ddd;
 }
 
-/* Button styles */
-button {
-    padding: 8px 16px; /* Reduced padding */
+a{
+    padding: 10px 20px;
     margin-top: 10px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    font-size: 14px; /* Reduced font size */
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    text-decoration: none;
 }
 
-/* Add to calendar button */
+a:hover {
+    background-color: #ddd;
+}
+
+/* Butões*/
+button{
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
 .add-btn {
     background-color: #28a745;
     color: white;
@@ -109,7 +143,6 @@ button {
     background-color: #218838;
 }
 
-/* Close button */
 .close-btn {
     background-color: #dc3545;
     color: white;
@@ -119,55 +152,118 @@ button {
     background-color: #c82333;
 }
 
-/* Tooltip for event list */
+/* Eventos */
+.event {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.event:hover {
+    background-color: #e0e0e0;
+}
+
 .event-tooltip {
     position: absolute;
     background-color: #fff;
-    padding: 8px;
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     top: 0;
     left: 100%;
     margin-left: 10px;
     white-space: nowrap;
-    font-size: 13px;
+    font-size: 0.9rem;
     color: #333;
 }
 
-/* Event item styles */
-.event {
-    position: relative;
-    padding: 8px;
-    margin: 5px 0;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.event:hover {
-    background-color: #ddd;
-}
-
-/* Progress bar container */
+/* Barra de Progresso*/
 .progress-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Reduced margin */
+    margin: 20px 0;
 }
 
-/* Ranking styles */
-#ranking {
-    margin-top: 20px; /* Reduced margin */
+progress {
+    width: 100%;
+    max-width: 400px;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
+progress::-webkit-progress-bar {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #4caf50;
+    border-radius: 10px;
+}
+
+/* Ranking */
 #rankingList li {
-    font-size: 16px; /* Reduced font size */
-    padding: 5px 0;
+    font-size: 1rem;
+    padding: 8px 0;
+    list-style: none;
 }
 
 #rankingList li.current-user {
     font-weight: bold;
     color: #28a745;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .calendar div {
+        padding: 8px;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .modal {
+        width: 95%;
+    }
+
+    .calendar {
+        gap: 5px;
+    }
+
+    .calendar div {
+        padding: 5px;
+    }
+
+    progress {
+        height: 15px;
+    }
+}
+
+
+
+
+

@@ -1,89 +1,162 @@
 body {
     font-family: Arial, sans-serif;
+    padding: 20px;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #F3F3F3;
+    background-image: linear-gradient(0deg, transparent 24%, #dad9d9 25%, #dad9d9 26%, transparent 27%, transparent 74%, #dad9d9 75%, #dad9d9 76%, transparent 77%, transparent),
+                      linear-gradient(90deg, transparent 24%, #dad9d9 25%, #dad9d9 26%, transparent 27%, transparent 74%, #dad9d9 75%, #dad9d9 76%, transparent 77%, transparent);
+    background-size: 60px 60px;
+    box-sizing: border-box;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #333;
+    color: white;
 }
 
-h1, h2 {
-    margin: 0;
-    padding: 10px;
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+nav a:hover {
+    background-color: #575757;
+    border-radius: 5px;
 }
 
 main {
+    max-width: 1200px;
+    margin: auto;
     padding: 20px;
 }
 
 section {
-    background-color: #fff;
-    margin: 20px 0;
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
+h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+form label {
     display: block;
-    margin: 10px 0 5px;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
+form input,
+form textarea,
+form button {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    margin-top: 5px;
     border-radius: 5px;
-    box-sizing: border-box;
+    border: 1px solid #333;
 }
 
-button {
+form button {
     background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+    color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button:hover {
+form button:hover {
     background-color: #555;
+}
+
+#testimonials-carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.testimonial-item {
+    min-width: 100%;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    transition: transform 1s ease-in-out;
+}
+
+#testimonials-carousel cite {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#gamification-section {
+    text-align: center;
+}
+
+#user-stats p {
+    margin: 5px 0;
+}
+
+#achievements ul {
+    list-style-type: none;
+    padding: 0;
 }
 
 footer {
     text-align: center;
     padding: 10px;
     background-color: #333;
-    color: #fff;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    color: white;
+    margin-top: 20px;
 }
 
-form {
-    max-width: 600px;
-    margin: 0 auto;
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form input,
+    form textarea,
+    form button {
+        width: 100%;
+    }
+
+    #testimonials-carousel {
+        flex-direction: column;
+    }
 }
 
-textarea {
-    height: 100px;
-}
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem;
+    }
 
-section#statistics {
-    text-align: center;
-}
+    form label {
+        font-size: 0.9rem;
+    }
 
-section#statistics p {
-    font-size: 14px;
-    color: #666;
+    .testimonial-item {
+        font-size: 1rem;
+    }
 }
