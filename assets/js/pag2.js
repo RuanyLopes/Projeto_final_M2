@@ -1,98 +1,115 @@
-// Inicializa o progresso, pontos e nível a partir do localStorage
-window.userPoints = parseInt(localStorage.getItem("userPoints")) || 0;
-window.progress = parseInt(localStorage.getItem("progress")) || 0;
-window.level = parseInt(localStorage.getItem("level")) || 1;
+class GamificationApp {
+    constructor() {
+        this.userPoints = parseInt(localStorage.getItem("userPoints")) || 0;
+        this.progress = parseInt(localStorage.getItem("progress")) || 0;
+        this.level = parseInt(localStorage.getItem("level")) || 1;
 
-// Função de adicionar evento ao calendário
-function addToCalendar(eventName) {
-    alert(`${eventName} adicionado ao seu calendário!`);
-    userPoints += 10; // Ganho de pontos ao adicionar evento
-    progress = Math.min(progress + 25, 100); // Atualiza o progresso
-    updateUserProgress();
-    checkBadges();
-    checkChallenges();
-}
+        this.progressBar = document.getElementById("participationProgress");
+        this.pointsDisplay = document.getElementById("participationPoints");
+        this.levelDisplay = document.getElementById("userLevel");
 
-// Atualiza o progresso e os pontos
-function updateUserProgress() {
-    document.getElementById("participationProgress").value = progress;
-    document.getElementById("participationPoints").textContent = userPoints;
+        // Atualiza a interface do usuário assim que a classe for inicializada
+        this.initGamification();
+    }
 
-    // Salva no localStorage
-    localStorage.setItem("userPoints", userPoints);
-    localStorage.setItem("progress", progress);
-    localStorage.setItem("level", level);
+    static updateGamification(points, message = "") {
+        const instance = new GamificationApp();
+        instance.userPoints += points;
+        instance.progress = Math.min(instance.progress + 10, 100);
+        instance.updateUserInterface();
+        if (message) alert(message);
+    }
 
-    // Atualizar nível
-    const newLevel = Math.floor(userPoints / 50) + 1;
-    if (newLevel > level) {
-        level = newLevel;
-        document.getElementById("userLevel").textContent = level;
-        alert(`Parabéns! Você alcançou o nível ${level}!`);
+    initGamification() {
+        this.updateUserInterface();
+        this.checkChallenges();
+        this.updateRanking();
+    }
+
+    updateUserInterface() {
+        this.progressBar.value = this.progress;
+        this.pointsDisplay.textContent = this.userPoints;
+        this.levelDisplay.textContent = this.calculateLevel();
+        this.saveState();
+    }
+
+    saveState() {
+        localStorage.setItem("userPoints", this.userPoints);
+        localStorage.setItem("progress", this.progress);
+        localStorage.setItem("level", this.level);
+    }
+
+    calculateLevel() {
+        const newLevel = Math.floor(this.userPoints / 50) + 1;
+        if (newLevel > this.level) {
+            this.level = newLevel;
+            alert(`Parabéns! Você alcançou o nível ${this.level}!`);
+        }
+        return this.level;
+    }
+
+    checkChallenges() {
+        if (this.userPoints >= 30) this.unlockChallenge("challenge1");
+        const calendarDates = JSON.parse(localStorage.getItem("userDates")) || [];
+        if (calendarDates.length > 0) this.unlockChallenge("challenge2");
+    }
+
+    unlockChallenge(challengeId) {
+        const challenge = document.getElementById(challengeId);
+        if (challenge && challenge.classList.contains("locked")) {
+            challenge.classList.remove("locked");
+            challenge.classList.add("unlocked");
+            alert(`Desafio Concluído: ${challenge.textContent.trim()}!`);
+        }
+    }
+
+    updateRanking() {
+        // Espera até que o DOM tenha carregado completamente para acessar 'currentUser'
+        const currentUser = document.getElementById("currentUser");
+        if (currentUser) {
+            currentUser.textContent = `Você: ${this.userPoints} pontos`;
+        }
+
+        const rankingList = document.getElementById("rankingList");
+        const users = [
+            { name: "Ana", points: 120 },
+            { name: "Carlos", points: 100 },
+            { name: "Você", points: this.userPoints }
+        ];
+        users.sort((a, b) => b.points - a.points);
+
+        rankingList.innerHTML = "";
+        users.forEach(user => {
+            const li = document.createElement("li");
+            li.textContent = `${user.name}: ${user.points} pontos`;
+            rankingList.appendChild(li);
+        });
     }
 }
 
-// Verifica se o usuário completou desafios
-function checkChallenges() {
-    if (userPoints >= 30 && !document.getElementById("challenge1").classList.contains("unlocked")) {
-        unlockChallenge("challenge1");
+document.addEventListener('DOMContentLoaded', function() {
+    const eventItems = document.querySelectorAll('.event');
+    
+    // Verifica se há itens de evento
+    if (eventItems.length > 0) {
+        eventItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                const title = item.getAttribute('data-title');
+                const time = item.getAttribute('data-time');
+                const speaker = item.getAttribute('data-speaker');
+                const link = item.getAttribute('data-link');
+                
+                // Chama a função de mostrar detalhes do evento
+                showEventDetails(title, time, speaker, link);
+            });
+        });
     }
-    if (selectedDate.textContent && !document.getElementById("challenge2").classList.contains("unlocked")) {
-        unlockChallenge("challenge2");
-    }
-}
+    const gamificationApp = new GamificationApp();
+});
 
-// Desbloqueia um desafio
-function unlockChallenge(challengeId) {
-    const challenge = document.getElementById(challengeId);
-    challenge.classList.remove("locked");
-    challenge.classList.add("unlocked");
-    alert(`Desafio Concluído: ${challenge.textContent.trim()}!`);
-}
 
-// Verifica se o usuário desbloqueou badges
-function checkBadges() {
-    if (userPoints >= 40) {
-        unlockBadge("badge1");
-    }
-    if (userPoints >= 50) {
-        unlockBadge("badge2");
-    }
-}
-
-// Desbloqueia uma badge
-function unlockBadge(badgeId) {
-    const badge = document.getElementById(badgeId);
-    badge.style.display = "block";
-    badge.classList.add("unlocked");
-    alert(`Parabéns! Você desbloqueou a conquista: ${badge.textContent.trim()}`);
-}
-
-// Inicializar progresso ao carregar a página
-window.onload = function () {
-    updateUserProgress();
-    // Chamar a função de ranking se necessário (se tiver ranking)
-    updateRanking();
-};
-
-// Atualiza ranking
-function updateRanking() {
-    const currentUser = document.getElementById("currentUser");
-    currentUser.textContent = `Você: ${userPoints} pontos`;
-
-    const rankingList = document.getElementById("rankingList");
-    const users = [
-        { name: "Ana", points: 120 },
-        { name: "Carlos", points: 100 },
-        { name: "Você", points: userPoints }
-    ];
-    users.sort((a, b) => b.points - a.points);
-
-    rankingList.innerHTML = ""; // Limpar ranking
-    users.forEach(user => {
-        const li = document.createElement("li");
-        li.textContent = `${user.name}: ${user.points} pontos`;
-        rankingList.appendChild(li);
-    });
+function showEventDetails(title, time, speaker, link) {
+    // Exibe os detalhes do evento
+    alert(`Detalhes do Evento:\n\nTítulo: ${title}\nHora: ${time}\nPalestrante: ${speaker}\nLink para Transmissão: ${link}`);
 }
 
