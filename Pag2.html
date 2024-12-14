@@ -9,17 +9,16 @@
 <body>
     <header>
         <button id="openModalBtn">Abrir Calendário</button>
+        <a href="index.html#mainPage">Início</a>
 
-        <!-- Modal -->
-        <div id="calendarModal" class="modal">
+
+        <div id="calendarModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <div class="modal-header">Calendário</div>
-                <div class="calendar" id="calendar">
-                    <!-- O calendário será gerado via JavaScript -->
-                </div>
-                <p id="selectedDate"></p>
-                <button id="addToCalendar" class="add-btn">Adicionar ao Meu Calendário</button>
-                <button class="close-btn" id="closeModalBtn">Fechar</button>
+                <div class="calendar" id="calendar"></div>
+                <p id="selectedDate">Data Selecionada: </p>
+                <button id="addToCalendar">Adicionar ao Meu Calendário</button>
+                <button id="closeModalBtn">Fechar</button>
             </div>
         </div>
     </header>
@@ -27,10 +26,10 @@
     <h1>Eventos Programados:</h1>
     <section>
         <ul id="eventList">
-            <li class="event" onclick="addToCalendar('Dia 1: Introdução e formação de equipes')">Dia 1: Introdução e formação de equipes</li>
-            <li class="event" onclick="addToCalendar('Dia 2: Palestras sobre desenvolvimento colaborativo')">Dia 2: Palestras sobre desenvolvimento colaborativo</li>
-            <li class="event" onclick="addToCalendar('Dia 3: Compartilhamento e avaliação de materiais')">Dia 3: Compartilhamento e avaliação de materiais</li>
-            <li class="event" onclick="addToCalendar('Dia 4: Premiação e encerramento')">Dia 4: Premiação e encerramento</li>
+            <li class="event" data-title="Dia 1: Introdução e formação de equipes" data-time="10:00" data-speaker="Palestrante 1" data-link="link-transmissao1">Dia 1: Introdução e formação de equipes</li>
+            <li class="event" data-title="Dia 2: Palestras sobre desenvolvimento colaborativo" data-time="14:00" data-speaker="Palestrante 2" data-link="link-transmissao2">Dia 2: Palestras sobre desenvolvimento colaborativo</li>
+            <li class="event" data-title="Dia 3: Compartilhamento e avaliação de materiais" data-time="09:00" data-speaker="Palestrante 3" data-link="link-transmissao3">Dia 3: Compartilhamento e avaliação de materiais</li>
+            <li class="event" data-title="Dia 4: Premiação e encerramento" data-time="16:00" data-speaker="Palestrante 4" data-link="link-transmissao4">Dia 4: Premiação e encerramento</li>
         </ul>
     </section>
 
@@ -63,9 +62,9 @@
             </ol>
         </div>
     </section>
-    
 
     <script src="assets/js/calendar.js"></script>
     <script src="assets/js/pag2.js"></script>
 </body>
 </html>
+
