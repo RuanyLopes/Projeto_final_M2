@@ -6,6 +6,9 @@ class App {
         // Inicializar eventos
         document.getElementById("registrationForm").addEventListener("submit", this.registerUser.bind(this));
         document.getElementById("loginForm").addEventListener("submit", this.loginUser.bind(this));
+
+        // Verifica o hash quando a página carrega
+        window.addEventListener("load", this.checkHash.bind(this));
     }
 
     goToLoginPage() {
@@ -71,9 +74,28 @@ class App {
         pages.forEach(page => {
             document.getElementById(page).style.display = page === pageId ? "block" : "none";
         });
+
+        // Atualizar o hash na URL
+        if (pageId !== "initialPage") {
+            window.location.hash = `#${pageId}`;
+        } else {
+            history.pushState(null, null, " "); // Remove o hash
+        }
+    }
+
+    checkHash() {
+        const hash = window.location.hash.substring(1); // Remove o '#'
+        if (hash && ["mainPage", "characterContainer", "loginPage", "registrationPage"].includes(hash)) {
+            this.showPage(hash);
+        } else {
+            this.showPage("initialPage");
+        }
     }
 }
 
 const app = new App();
+
+
+
 
 

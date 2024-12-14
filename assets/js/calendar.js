@@ -6,7 +6,7 @@ class CalendarApp {
         this.openModalBtn = document.getElementById("openModalBtn");
         this.closeModalBtn = document.getElementById("closeModalBtn");
         this.addToCalendarBtn = document.getElementById("addToCalendar");
-        
+
         this.initEventListeners();
     }
 
@@ -27,22 +27,22 @@ class CalendarApp {
 
     closeModal() {
         this.calendarModal.style.display = "none";
-        this.selectedDate.textContent = ""; // Limpar seleção
+        this.selectedDate.textContent = "Data Selecionada: "; // Reset selection
     }
 
     generateCalendar(year, month) {
-        this.calendar.innerHTML = ""; // Limpar calendário
+        this.calendar.innerHTML = ""; // Clear calendar
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        // Dias em branco
+        // Blank days
         for (let i = 0; i < firstDay; i++) {
             const blankDay = document.createElement("div");
             blankDay.className = "blank-day";
             this.calendar.appendChild(blankDay);
         }
 
-        // Dias do mês
+        // Days of the month
         for (let day = 1; day <= daysInMonth; day++) {
             const dayDiv = document.createElement("div");
             dayDiv.textContent = day;
@@ -58,7 +58,7 @@ class CalendarApp {
     }
 
     addToCalendar() {
-        if (this.selectedDate.textContent) {
+        if (this.selectedDate.textContent !== "Data Selecionada: ") {
             alert(`${this.selectedDate.textContent} adicionada ao seu calendário.`);
             GamificationApp.updateGamification(10, "Evento adicionado com sucesso!");
             const savedDates = JSON.parse(localStorage.getItem("userDates")) || [];
@@ -71,6 +71,9 @@ class CalendarApp {
     }
 }
 
-// Inicializar o calendário
-const calendarApp = new CalendarApp();
+// Initialize CalendarApp
+new CalendarApp();
+
+
+
 
