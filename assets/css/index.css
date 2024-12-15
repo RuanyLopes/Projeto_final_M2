@@ -310,6 +310,7 @@ h2 {
         padding: 10px;
     }
 
+    .Initial_container,
     .login_container, 
     .registration_container, 
     .character_container, 
@@ -420,7 +421,3 @@ h2 {
         padding: 5px;
     }
 }
-
-
-
-
